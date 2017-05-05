@@ -1,5 +1,5 @@
 """
-WSGI config for djnote project.
+WSGI config for djnotes project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

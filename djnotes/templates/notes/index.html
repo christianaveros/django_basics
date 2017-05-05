@@ -3,8 +3,23 @@
 {% block title %}Notes{% endblock title %}
 
 {% block content %}
+{# Create new note form #}
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form class="inline-form" action="{% url 'index' %}" method="post">
+					{% csrf_token %}
+					<input type="text" name="title" class="form-control clear-focus-highlight" id="txtNewNote" placeholder="Take a note...">
+					<input type="submit" class="btn btn-raised btn-primary btn-sm" value="create">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="row">
 	{% for note in notes %}
+	<a href="{% url 'update' note.id %}">
 	<div class="col-md-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -15,6 +30,7 @@
 			</div>
 		</div>
 	</div>
+	</a>
 	{% endfor %}
 </div>
 {% endblock content %}

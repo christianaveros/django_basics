@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Notes {% if note.title %}| {{ note.title }}{% endif %}{% endblock title %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<form action="{% url 'delete' note.id %}" method="post">
+			{% csrf_token %}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<input type="text" class="form-control clear-focus-highlight" name="title" value="{{ note.title }}" readonly="readonly" placeholder="Enter title...">
+				</div>
+				<div class="panel-body">
+					<textarea class="form-control clear-focus-highlight" name="note" rows="10em" readonly="readonly" placeholder="Enter note...">{{ note.note }}</textarea>
+				</div>
+				<div class="panel-footer">
+					<input type="submit" class="btn btn-danger btn-raised btn-sm" value="Delete">
+					<a href="{%url 'update' note.id %}">Cancel</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<p><a class="btn btn-raised btn-primary btn-xs" href="{% url 'index' %}">Back</a></p>
+	</div>
+</div>
+{% endblock content %}

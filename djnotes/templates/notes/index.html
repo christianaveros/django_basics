@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en-us">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>My awesome note app</title>
-</head>
-<body>
-	<h1>Hello World!</h1>
-	<ul>
-		{% for note in notes %}
-		<li>
-			<div>
-				Title: {{note.title}} <br>
-				Note: {{note.note}}
+{% extends 'base.html' %}
+
+{% block title %}Notes{% endblock title %}
+
+{% block content %}
+<div class="row">
+	{% for note in notes %}
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<strong>{{note.title}}</strong>
 			</div>
-		</li>
-		{% endfor %}
-	</ul>
-</body>
-</html>
+			<div class="panel-body">
+				{{note.note}}
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock content %}
